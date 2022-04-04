@@ -1,0 +1,23 @@
+{
+  "name": "nodejs-express-ajax-jquery-bootstrap-mongodb",
+  "version": "1.0.0",
+  "description": "POST/GET from MongDB via Mongoose - Ajax JQuery Bootstrap",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "NodeJS",
+    "Express",
+    "MongoDB",
+    "Mongoose",
+    "JQuery",
+    "Bootstrap"
+  ],
+  "author": "student",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.3",
+    "mongoose": "^5.13.14"
+  }
+}
