@@ -1,6 +1,5 @@
 module.exports = {
-   // url: 'mongodb://localhost:27017/prw08'
-   url: 'mongodb://student:h3T-bYhx-uW8@localhost:27017/sandbox'
-}
+   url: 'mongodb+srv://denisaghiriti7:Adriana-2003@cluster0.flkixsq.mongodb.net/db?retryWrites=true&w=majority&appName=Cluster0'
+ };
 
 

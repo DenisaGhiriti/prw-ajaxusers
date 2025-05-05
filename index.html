@@ -1,0 +1,168 @@
+<!-- <html>
+  <script>
+    function changeText() {
+      xmlhttp = new XMLHttpRequest();
+      xmlhttp.open("GET", "http://localhost:8001/getstring", true);
+      xmlhttp.onreadystatechange = function () {
+        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+          string = xmlhttp.responseText;
+          document.getElementById("test").innerHTML = string;
+        }
+      };
+      xmlhttp.send();
+    }
+  </script>
+  <p id="test">Acesta este index.html</p>
+  <button onclick="javascript:changeText()">Demo</button>
+</html> -->
+<!-- <html>
+  <style>
+    .option {
+      padding: 3px;
+    }
+    #theimage {
+      margin-top: 50px;
+    }
+  </style>
+  <script>
+    function update(imgName) {
+      // alert(imgName);
+      var params = "orem=ipsum&name=" + imgName;
+      xhr = new XMLHttpRequest();
+      xhr.open("POST", "http://localhost:8001/demo", true);
+      xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+          string = xhr.responseText;
+          document.getElementById("theimage").innerHTML = string;
+        }
+      };
+      xhr.send(params);
+    }
+  </script>
+  <div style="margin: 120px">
+    <select onchange="update(this.options[this.selectedIndex].text)">
+      <option value="adobe">Adobe</option>
+      <option value="apple">Apple</option>
+      <option value="ibm">IBM</option>
+      <option value="yahoo">Yahoo</option>
+    </select>
+    <div id="theimage"></div>
+  </div>
+</html> -->
+<!-- <html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+<a href="/mac">imagine SVG</a>
+<script>
+$(document).ready(function() {
+ $("p").click(function(){
+ $.post("http://localhost:8001/user",
+ { name: "Donald Duck", city: "Duckburg" },
+ function(data,status) {
+ alert("Data: " + data + "\nStatus: " + status);
+ });
+ });
+});
+</script>
+<p>result here</p>
+<button>Send an HTTP POST request</button>
+<script>
+$(document).ready(function () {
+ $("button").click(function(){
+ $.ajax('http://localhost:8001/user', {
+ type: 'POST', // http method
+ data: { myData: 'This is my data.' }, // data to submit
+ success: function (data, status, xhr) {
+ $('p').append('status: ' + status + ', data: ' + data);
+ },
+ error: function (jqXhr, textStatus, errorMessage) {
+ $('p').append('Error' + errorMessage);
+ }
+ });
+ });
+});
+</script>
+</html> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Căutare Cărți</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f8f8f8;
+      padding: 30px;
+      text-align: center;
+    }
+    input {
+      padding: 10px;
+      width: 300px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      margin-left: 10px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+    ul {
+      list-style-type: none;
+      padding: 0;
+      margin-top: 20px;
+    }
+    li {
+      background: white;
+      padding: 15px;
+      margin-bottom: 10px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      text-align: left;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Caută cărți după cuvânt cheie</h1>
+  <input type="text" id="searchInput" placeholder="Ex: node, react, javascript...">
+  <button onclick="search()">Caută</button>
+
+  <ul id="results"></ul>
+
+  <script>
+    function search() {
+      const query = document.getElementById('searchInput').value;
+      fetch(`/find/${query}`)
+        .then(response => response.json())
+        .then(data => {
+          const results = document.getElementById('results');
+          results.innerHTML = '';
+          data.forEach(item => {
+            const li = document.createElement('li');
+            li.textContent = item.title;
+            results.appendChild(li);
+          });
+        })
+        .catch(err => {
+          console.error('Eroare la căutare:', err);
+        });
+    }
+  </script>
+
+</body>
+</html>
